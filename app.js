@@ -4,13 +4,22 @@ const BASE_URL = 'https://628b2f12667aea3a3e290de6.mockapi.io/todos'
 let todosArray = [];
 
 
-function goToTodoPage(todo) {
+function goToTodoPage(id) {
   let urlString = "/todo.html"
-  if(todo){
-    urlString = urlString + '?id=' + todo.id + '&name='+ todo.name
+  if(id){
+    urlString = urlString + '?id=' + id;
   }
   window.location.href = urlString;
 }
+
+// function goToTodoPage2(todo){
+//   let urlString = "/todo.html"
+//   if (todo) {
+//     const todoString = JSON.stringify(todo);
+//     sessionStorage.setItem('selectedTodo', todoString);
+//   }
+//   window.location.href = urlString;
+// }
 
 function populateTagContainer(container, tags){
   for (const tag of tags) {
@@ -109,7 +118,7 @@ function displayTodos(todos){
     deleteButton.onclick = () => requestConfirmToDelete(todo.id);
 
     const editButton = todoCard.querySelector('.edit-button');
-    editButton.onclick = () => goToTodoPage(todo);
+    editButton.onclick = () => goToTodoPage(todo.id);
 
     const divider = todoCard.querySelector('.divider');
     divider.style.backgroundColor = todo.priority.color;
