@@ -61,7 +61,7 @@ button{
   flex-direction: column;
   padding: 16px;
   border-bottom: 1px solid;
-  gap: 4px;
+  gap: 8px;
 }
 
 .divider{
@@ -72,8 +72,8 @@ button{
 
 .tag{
   border: 1px solid;
-  padding: 2px;
-  border-radius: 4px;
+  padding: 4px;
+  border-radius: 12px;
   background-color: #414141;
   color: #eeeeee;
   box-sizing: border-box;
@@ -82,7 +82,7 @@ button{
 
 .todo-name{
   font-size: x-large;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .buttons-container{
