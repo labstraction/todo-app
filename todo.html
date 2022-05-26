@@ -8,25 +8,34 @@
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+  <header class="nav-bar">
+    <strong class="app-title">ToDo App</strong>
+    <button id="refresh-button" onclick="goHome()">
+      <img width="30px" src="./assets/home.svg" alt="">
+    </button>
+  </header>
   <div class="todo-container">
-    <h2>todo</h2>
+    <h2 id="todo-title">Inserisci nuovo Todo</h2>
+    <strong class="section-title">Nome</strong>
     <input type="text" name="todo-name" id="todo-name">
-    <div>
-      <h2>tags</h2>
+    <strong class="section-title">Tag</strong>
+    <div class="tags-container">
       <span class="tag">casa</span>
       <span class="tag">hobby</span>
       <span class="tag">spesa</span>
       <span class="tag">lavoro</span>
       <span class="tag">famiglia</span>
     </div>
-    <div>
-      <h2>priorità</h2>
+    <strong class="section-title">Priorità</strong>
+    <div class="priority-container">
       <span class="tag">bassa</span>
       <span class="tag">media</span>
       <span class="tag">alta</span>
       <span class="tag">molto alta</span>
     </div>
+    <button class="save-button">save</button>
   </div>
 </body>
 <script src="./todo.js"></script>
+
 </html>
