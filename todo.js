@@ -1,5 +1,6 @@
+const BASE_URL = 'https://628b2f12667aea3a3e290de6.mockapi.io/todos'
 
-
+let selectedTodo;
 
 // function parseUrlParams(){
 //   const url = window.location.href;
@@ -24,7 +25,7 @@
 //   }
 // }
 
-function goHome(){
+function goHome() {
   window.location.href = './'
 }
 
@@ -35,9 +36,78 @@ function parseUrlParams() {
   //console.log('params', params);
 }
 
-const params = parseUrlParams();
+function changeTitle() {
+  const pageTitle = document.getElementById('page-title');
+  pageTitle.innerHTML = 'Modifica Todo'
+}
 
-console.log(params);
+function loadSelectedTodo(id) {
+  const todoUrl = BASE_URL + '/' + id;
+  fetch(todoUrl)
+  .then(resp => resp.json())
+  .then(result => fillForm(result));
+}
+
+function colorTags(selectedTags){
+  const tags = document.getElementsByClassName('tag');
+  for (const tagSpan of tags) {
+    if (selectedTags.includes(tagSpan.innerHTML)) {
+      tagSpan.style.backgroundColor = 'crimson';
+    } else {
+      tagSpan.style.backgroundColor = '#414141';
+    }
+  }
+}
+
+function colorPriority(priority){
+  const priorities = document.getElementsByClassName('priority');
+  for (const prioritySpan of priorities) {
+    if (priority.name === prioritySpan.innerHTML) {
+      prioritySpan.style.backgroundColor = priority.color;
+    } else {
+      prioritySpan.style.backgroundColor = '#414141'
+    }
+  }
+}
+
+function addOrRemoveTag(tag){
+  if (selectedTodo.tags.includes(tag)) {
+    selectedTodo.tags = selectedTodo.tags.filter(t => filterTags(t, tag));
+  } else {
+    selectedTodo.tags.push(tag);
+  }
+  colorTags(selectedTodo.tags);
+}
+
+function changePriority(priority) {
+  selectedTodo.priorityOrder = priority;
+  colorPriority(selectedTodo.priority);
+}
+
+function filterTags(t1, t2){
+  return t1 !== t2;
+}
+
+function fillForm(obj){
+  const todo = Todo.fromDbObj(obj);
+  selectedTodo = todo;
+  const nameInput = document.getElementById('name-input');
+  nameInput.value = todo.name;
+  colorTags(todo.tags);
+  colorPriority(todo.priority);
+}
+
+
+const params = parseUrlParams();
+if (params.id) {
+  changeTitle()
+  loadSelectedTodo(params.id)
+}
+
+
+
+
+
 
 // function getTodoFromSessionStorage(){
 //   const todoString = sessionStorage.getItem('selectedTodo');

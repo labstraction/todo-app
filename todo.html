@@ -15,27 +15,28 @@
     </button>
   </header>
   <div class="todo-container">
-    <h2 id="todo-title">Inserisci nuovo Todo</h2>
+    <h2 id="page-title">Inserisci nuovo Todo</h2>
     <strong class="section-title">Nome</strong>
-    <input type="text" name="todo-name" id="todo-name">
+    <input type="text" name="name-input" id="name-input">
     <strong class="section-title">Tag</strong>
     <div class="tags-container">
-      <span class="tag">casa</span>
-      <span class="tag">hobby</span>
-      <span class="tag">spesa</span>
-      <span class="tag">lavoro</span>
-      <span class="tag">famiglia</span>
+      <span class="chip tag" onclick="addOrRemoveTag('casa')">casa</span>
+      <span class="chip tag" onclick="addOrRemoveTag('hobby')">hobby</span>
+      <span class="chip tag" onclick="addOrRemoveTag('spesa')">spesa</span>
+      <span class="chip tag" onclick="addOrRemoveTag('lavoro')">lavoro</span>
+      <span class="chip tag" onclick="addOrRemoveTag('famiglia')">famiglia</span>
     </div>
     <strong class="section-title">Priorità</strong>
     <div class="priority-container">
-      <span class="tag">bassa</span>
-      <span class="tag">media</span>
-      <span class="tag">alta</span>
-      <span class="tag">molto alta</span>
+      <span class="chip priority" onclick="changePriority(0)">bassa</span>
+      <span class="chip priority" onclick="changePriority(1)">media</span>
+      <span class="chip priority" onclick="changePriority(2)">alta</span>
+      <span class="chip priority" onclick="changePriority(3)">molto alta</span>
     </div>
     <button class="save-button">save</button>
   </div>
 </body>
+<script src="./model.js"></script>
 <script src="./todo.js"></script>
 
 </html>
