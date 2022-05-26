@@ -41,6 +41,11 @@ class Todo {
     return todo;
   }
 
+  toDbObj(){
+    const obj = {name: this.name, tags: this.tags, priority: this.priority.order, creationDate: this._creationDate/1000};
+    return obj;
+  }
+
   static orderTodoByPriority(t1, t2) {
     return t2.priority.order - t1.priority.order;
   }
