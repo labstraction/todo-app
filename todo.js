@@ -107,39 +107,29 @@ function saveTodo(){
   const name = nameInput.value.trim();
 
   if (name) {
-
     selectedTodo.name = name;
     const dbObj = selectedTodo.toDbObj();
     const dbObjJson = JSON.stringify(dbObj);
-
     let url;
     let fetchOptions;
-
     if (params.id) {
-      
       url = BASE_URL + '/' + params.id;
       fetchOptions = {
         method: 'PUT', body: dbObjJson, headers: {
           'Content-Type': 'application/json'
         }
       };
-    
     } else {
-
       url = BASE_URL;
       fetchOptions = {
         method: 'post', body: dbObjJson, headers: {
           'Content-Type': 'application/json'
         }
       };
-      
     }
-
     fetch(url, fetchOptions)
       .then(resp => resp.json())
       .then(res => goHome())
-
-
   } else {
     alert('non posso savare un todo senza nome')
   }
